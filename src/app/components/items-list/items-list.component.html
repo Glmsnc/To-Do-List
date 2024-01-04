@@ -1,3 +1,11 @@
-<div *ngFor="let item of data">
-    <app-item [itemData]="item.id" (removeEvent)="removeCurrentItem($event)"></app-item>
+<div class="container">
+    <div>
+        <app-add-new-item (addNewItem)="addItemOnList($event)"></app-add-new-item>
+    </div>
+    <div class="list-items">
+    <span> Lista de Itens</span> 
+
+        <app-item *ngFor="let item of data" [itemData]="item" (itemDataChange)="changeItemOnList($event)" (removeEvent)="removeCurrentItem($event)"></app-item>
+    </div>
+
 </div>

@@ -7,12 +7,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ItemComponent {
   @Input() itemData: any;
+  @Output() itemDataChange:  EventEmitter<any> = new EventEmitter<any>();
   @Output() removeEvent: EventEmitter<any> = new EventEmitter<any>();
-
+  editMode = false;
   
   removeButtonClick(){
-    console.log('emitting id', this.itemData)
-    this.removeEvent.emit(this.itemData);
+    this.removeEvent.emit(this.itemData.id);
+  }
+  changeItem(changeItem: string){
+    this.itemData.name = changeItem;
+    this.itemDataChange.emit(this.itemData)
+    this.editMode = false;
   }
 }
 

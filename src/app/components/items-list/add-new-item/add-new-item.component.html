@@ -1,0 +1,8 @@
+<form [formGroup]="itemForm" (ngSubmit)="sendForm()">
+    <mat-form-field>
+        <input matInput placeholder="Novo Item" formControlName="name" required>
+          <mat-error *ngIf="name.invalid && name.touched">
+            É necessário preencher o campo de nome</mat-error>
+      </mat-form-field>
+    <button mat-button color="primary" type="submit">Adicionar</button>
+  </form>

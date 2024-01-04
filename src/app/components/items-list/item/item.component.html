@@ -1,2 +1,25 @@
-<p>{{itemData}}</p>
-<button (click)="removeButtonClick()">Excluir</button>
+<div class="item-div">
+    <p class="item-text" *ngIf="!editMode">{{itemData.name}}</p>
+
+    <input matInput  [value]="itemData.name" #itemInput [ngClass]="editMode? '': 'hidden'">
+
+
+
+    <div class="button-container">
+        <button mat-button color="primary" *ngIf="editMode" (click)="changeItem(itemInput.value)">
+            Salvar
+        </button>
+
+        <button *ngIf="!editMode" (click)="editMode = !editMode" mat-icon-button >
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <button (click)="removeButtonClick()" mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+
+    </div>
+
+
+</div>
+<mat-divider></mat-divider>
