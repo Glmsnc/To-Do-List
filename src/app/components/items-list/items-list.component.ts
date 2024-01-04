@@ -7,15 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class ItemsListComponent {
 
-  @Input() data = [{id: 1, name: 'teste'},{id: 2, name: 'teste2'},{id: 3, name: 'teste3'},]
-  newItemName: string = 'tes'
+  @Input() data = [{id: 1, name: 'Item 1'},{id: 2, name: 'Item 2'},{id: 3, name: 'Item 3'},]
   removeCurrentItem(id: any){
     console.log(this.data.filter(item=> item.id == id))
     this.data = this.data.filter(item=> item.id !== id)
   }
 
   changeItemOnList(itemChange: any){
-    console.log('mudando', itemChange)
     this.data = this.data.map(item=> {
       if (item.id !== itemChange.id){
         return item;
